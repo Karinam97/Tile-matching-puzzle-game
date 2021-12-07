@@ -1,6 +1,52 @@
-#tile{
-  width: 100px;
-  height: 150px;
+/* .flip-card{
+  width: 200px;
+  height: 250px;
   background-image: url("https://www.the3rdsequence.com/texturedb/download/58/texture/png/128/outdoor+stone+tiles+pavement-128x128.png");
-  transition: 4s;
+
+}
+.flip-inner-card{
+  position: relative; /*positioned relative to its normal position*/
+/*  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 4s;
+  transform-style: preserve-3d;
+}
+.flip-card-back{
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: blue;
+  opacity: 50%;
+  transform: rotateY(180deg); /*it will rotate back*/
+/*}
+
+.flip-card-front, .flip-card-back{
+  position:absolute; /*so it stays in one place*/
+/*  width: 100%;
+  height: 100%;
+} */
+
+.flip-card {
+  width: 250px;
+  height: 300px;
+  position: relative;
+  transition: transform 4s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.flip-card-front {
+  background-image: url("https://www.the3rdsequence.com/texturedb/download/58/texture/png/128/outdoor+stone+tiles+pavement-128x128.png");
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(80deg);/**/
 }
