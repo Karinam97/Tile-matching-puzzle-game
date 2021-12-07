@@ -1,11 +1,13 @@
 console.log('hello');
-const tiles = document.getElementById('tile');
+document.querySelectorAll('.flip-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.style.transform = "rotateY(180deg)";
+
+  });
+});
 
 
-tiles.addEventListener('click', flipcard);
+function flipcard(tile){
 
 
-function flipcard(){
-  tiles.style.transform = "rotateY(180deg)";
-  
 }
