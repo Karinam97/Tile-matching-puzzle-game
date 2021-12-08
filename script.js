@@ -15,24 +15,38 @@ applies to multiple cards*/
 cards.forEach(card => {
 
   card.addEventListener('click', event => {
-    //event.preventDefault();
-    card.style.transform = "rotateY(180deg)";
-    card.classList.add('open');
-    opened_cards.push(card);/*once card is open its pushed to opened_cards array*/
-    console.log(opened_cards);
 
-    if(opened_cards.length > 1){
-      for(let el of opened_cards){
-        el.style.animationDelay = '2s';
-        el.style.transform = "rotateY(360deg)";
-        el.classList.remove('open');
+    card.style.transform = "rotateY(180deg)"; /*once clicked rotates card*/
+    card.classList.add('open');/*adds classname 'open'*/
+    opened_cards.push(card);/*once card is open its pushed to opened_cards array*/
+
+    /*checking if there is more than 2 opened cards*/
+    if(opened_cards.length > 2){
+
+      /*
+        ******************************************************
+        it has to check if two cards are the same, if yes it has to remove elements
+        from document,
+        if no, then just rotates them back to the same position
+      */
+
+      let open = opened_cards.every(el => el.className === 'blue');
+      console.log(open)
+      if(open){
+        console.log('im here **********')
+        removeCards();
+      }else{
+        opened_cards.forEach(el => {
+          el.style.transform = "rotateY(0)";/*rotates to the same position*/
+          el.classList.remove('open'); /*when rotates back it removes 'open' class*/
+        })
       }
-      opened_cards = [];
+
+      opened_cards = []; /*important to remove element from this list when they flip back*/
       }
     });
   });
 /*flip card back and remove class name 'open'*/
-
 
 
 //need to write a loop
