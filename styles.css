@@ -18,7 +18,15 @@ h1{
 
 .flip-card.open {
   pointer-events: none; /*disables clicking when card is open*/
+  //transform: rotateY(0);
 }
+.flip-card.matched{
+  transition: 2s;
+  display: none;
+  //transform-style: preserve-3d;/*this property must be used with transform prop. if this prop. is not added then the last element will on top of first element*/
+}
+
+
 
 .flip-card-front, .flip-card-back {
   position: absolute; /*the element is positioned absolutely to its first positioned parent*/
