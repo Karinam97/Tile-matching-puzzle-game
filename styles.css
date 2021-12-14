@@ -6,12 +6,13 @@ h1{
   width: 80%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .flip-card {
   margin: 20px;
-  width: 250px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   transition: transform 1.8s;
   transform-style: preserve-3d;/*this property must be used with transform prop. if this prop. is not added then the last element will on top of first element*/
 }
@@ -36,21 +37,16 @@ h1{
   border: 5px solid black;
 }
 
+
 .flip-card-front {
-  background-color: yellow;
-
-}
-
-.flip-card-back {
-  background-color: #2980b9;
-  color: white;
   /*if 0 degrees then the second elemnt is in front of an first element, if 180 then it is hidden behind first element which is front card*/
   transform: rotateY(180deg);/*this card is already flipped 180degrees that is why is not visible */
+  background-color: yellow;
 }
 
-.flip-card.red .flip-card-back {
+/* .flip-card.red .flip-card-back {
   background-color: red;
   color: white;
   /*if 0 degrees then the second elemnt is in front of an first element, if 180 then it is hidden behind first element which is front card*/
-  transform: rotateY(180deg);/*this card is already flipped 180degrees that is why is not visible */
-}
+/*  transform: rotateY(180deg);/*this card is already flipped 180degrees that is why is not visible */
+/* } */
