@@ -14,39 +14,32 @@ h1{
   width: 150px;
   height: 150px;
   transition: transform 1.8s;
-  transform-style: preserve-3d;/*this property must be used with transform prop. if this prop. is not added then the last element will on top of first element*/
+  /*this property must be used with transform prop.
+  as it preserves the 3D transformations*/
+  transform-style: preserve-3d;
 }
 
 .flip-card.open {
-  pointer-events: none; /*disables clicking when card is open*/
-  //transform: rotateY(0);
+  pointer-events: none; /*disables double-clicking when card is open*/
+
 }
 .flip-card.matched{
-  transition: 2s;
-  display: none;
-  //transform-style: preserve-3d;/*this property must be used with transform prop. if this prop. is not added then the last element will on top of first element*/
+  /*********hides the picture from the screen***********/
+  visibility: hidden;
 }
-
-
 
 .flip-card-front, .flip-card-back {
   position: absolute; /*the element is positioned absolutely to its first positioned parent*/
   width: 100%;
   height: 100%;
   text-align: center;
-  border: 5px solid black;
+  border: 3px solid black;
 }
-
 
 .flip-card-front {
   /*if 0 degrees then the second elemnt is in front of an first element, if 180 then it is hidden behind first element which is front card*/
-  transform: rotateY(180deg);/*this card is already flipped 180degrees that is why is not visible */
+  transform: rotateY(180deg);
+  /*this card is already flipped 180degrees that is why is not visible.
+  once flip-card is flipped it will be visible as it will be at 180degrees position too */
   background-color: yellow;
 }
-
-/* .flip-card.red .flip-card-back {
-  background-color: red;
-  color: white;
-  /*if 0 degrees then the second elemnt is in front of an first element, if 180 then it is hidden behind first element which is front card*/
-/*  transform: rotateY(180deg);/*this card is already flipped 180degrees that is why is not visible */
-/* } */
