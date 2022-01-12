@@ -1,6 +1,8 @@
 console.log('hello');
 /*store every element of the card to array*/
 let opened_cards = [];
+let score = document.getElementById("score");
+let scoreUpdate = 0;
 const cardArray = [
   {
     name:'card-1',
@@ -94,7 +96,9 @@ function match(){
       //el.style.transform = "rotateY(0deg)";
       el.classList.add('matched');
       //el.style.display = 'none';
+
     });
+    updateScore(scoreUpdate+100)
   }
 }
 
@@ -118,4 +122,9 @@ function flipCardsBack(){
       el.style.transform = "rotateY(0)";/*rotates to the same position*/
     })
   opened_cards = [];
+}
+
+function updateScore(update){
+  scoreUpdate=update;
+  score.innerHTML = scoreUpdate;
 }
