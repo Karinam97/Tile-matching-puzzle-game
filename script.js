@@ -1,4 +1,11 @@
 console.log('hello');
+let time = 120;
+
+setInterval(timeUpdate, 1000);
+if(time === 0){
+  clearTimeout(timeUpdate);
+}
+
 /*store every element of the card to array*/
 let opened_cards = [];
 let score = document.getElementById("score");
@@ -39,7 +46,7 @@ const cardArray = [
 ]
 
 cardArray.sort(() => 0.5 - Math.random());
-let game = document.querySelector('.game');
+let board = document.querySelector('.board');
 
 function createBoard(){
 
@@ -56,7 +63,7 @@ function createBoard(){
     flippedCard.classList.add('flip-card-front');
     card.appendChild(blankCard);
     card.appendChild(flippedCard);
-    game.appendChild(card);
+    board.appendChild(card);
   }
 }
 
@@ -127,4 +134,11 @@ function flipCardsBack(){
 function updateScore(update){
   scoreUpdate=update;
   score.innerHTML = scoreUpdate;
+}
+
+
+function timeUpdate(){
+  document.getElementById('time').innerHTML = time;
+  time--;
+
 }
