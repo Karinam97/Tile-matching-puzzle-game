@@ -1,5 +1,5 @@
 console.log('hello');
-let time = 120;
+let time = 20;
 
 //updates timer every 1000miliseconds
 setInterval(timeUpdate, 1000);
@@ -47,6 +47,7 @@ const cardArray = [
 cardArray.sort(() => 0.5 - Math.random());
 let board = document.querySelector('.board');
 
+/*------------creating board--------*/
 function createBoard(){
 
   for( let i = 0; i < cardArray.length ; i++){
@@ -141,6 +142,14 @@ function timeUpdate(){
 
   if(time<1){
     alert("you lost")
+    time=20;
+    score=0;
+    board.querySelectorAll('.flip-card').forEach( el => {
+       el.remove()
+    });
+    enableAllCards();
+
+    createBoard();
   }
   time--;
 }

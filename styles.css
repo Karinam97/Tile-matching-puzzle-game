@@ -3,8 +3,12 @@ body{
   font-family: 'Azeret Mono', monospace;
   text-align: center;
   color: #fff;
+  min-width: 500px;
 }
 
+h1, .scoreAndTime{
+  width: 100%;
+}
 
 .game{
   margin: 50px auto;
@@ -16,7 +20,7 @@ body{
   height: 90vh;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .scoreAndTime{
@@ -28,16 +32,16 @@ body{
 .board{
   margin: auto;
   width: 80%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  justify-items: center;
+  grid-template: 1fr / 1fr 1fr;
 
 }
 
 .flip-card {
   margin: 20px;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   transition: transform 1.8s;
   position: relative;
 
@@ -72,5 +76,5 @@ body{
   transform: rotateY(180deg);
   /*this card is already flipped 180degrees that is why is not visible.
   once flip-card is flipped it will be visible as it will be at 180degrees position too */
-  background-color: yellow;
+  background-color: rgb(50 50 49 / 83%);
 }
