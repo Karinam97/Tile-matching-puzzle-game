@@ -1,13 +1,9 @@
-let time = 20;
-let cards = [];
-//updates timer every 1000miliseconds
-setInterval(timeUpdate, 1000);
-
-
+let timer = 20;
+let cards = []; // cards elements in array
+let opened_cards = []; // flipped cards
+let scoreUpdate = 0; //score starts from 0
+let board = document.querySelector('.board');
 /*store every element of the card to array*/
-let opened_cards = [];
-let score = document.getElementById("score");
-let scoreUpdate = 0;
 const cardArray = [
   {
     name:'card-1',
@@ -42,8 +38,9 @@ const cardArray = [
     img: 'images/kiss.png'
   }
 ]
-
-let board = document.querySelector('.board');
+//updates timer every 1000miliseconds
+setInterval(timeUpdate, 1000);
+createBoard();
 
 /*------------creating board--------*/
 function createBoard(){
@@ -69,6 +66,11 @@ function createBoard(){
     cards.push(card);
   });
 
+  addingEventListener()
+}
+
+/*----------adding event listener to each card ----------------*/
+function addingEventListener(){
   cards.forEach(card => { /*this loops through each card without event listener*/
     card.addEventListener('click', () => { /*event listener is added to each of the card*/
 
@@ -98,9 +100,6 @@ function destroyBoard(){
   });
   cards=[];
 }
-createBoard();
-
-
 
 
 //checks if cards are matching
@@ -141,20 +140,19 @@ function flipCardsBack(){
 /*------------Score ----------*/
 function updateScore(update){
   scoreUpdate=update;
-  score.innerHTML = scoreUpdate;
+  document.getElementById("score").innerHTML = scoreUpdate;
 }
 
 /*--------Time update -----------*/
 function timeUpdate(){
-  document.getElementById('time').innerHTML = time;
+  document.getElementById('time').innerHTML = timer;
 
-  if(time<1){
+  if(timer<1){
     alert("you lost")
-    time=20;
-    scoreUpdate=0;
-
+    timer=20;
+    updateScore(scoreUpdate=0);
     destroyBoard();
     createBoard();
   }
-  time--;
+  timer--;
 }
