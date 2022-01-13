@@ -1,6 +1,5 @@
-console.log('hello');
 let time = 20;
-
+let cards = [];
 //updates timer every 1000miliseconds
 setInterval(timeUpdate, 1000);
 
@@ -44,11 +43,11 @@ const cardArray = [
   }
 ]
 
-cardArray.sort(() => 0.5 - Math.random());
 let board = document.querySelector('.board');
 
 /*------------creating board--------*/
 function createBoard(){
+  cardArray.sort(() => 0.5 - Math.random());
 
   for( let i = 0; i < cardArray.length ; i++){
     let card = document.createElement('div');
@@ -64,36 +63,45 @@ function createBoard(){
     card.appendChild(flippedCard);
     board.appendChild(card);
   }
+
+  //storing each element into cards array
+  document.querySelectorAll('.flip-card').forEach(card => {
+    cards.push(card);
+  });
+
+  cards.forEach(card => { /*this loops through each card without event listener*/
+    card.addEventListener('click', () => { /*event listener is added to each of the card*/
+
+      //allows to open only two cards
+        card.style.transform = "rotateY(180deg)"; /*once clicked rotates card*/
+        card.classList.add('open');/*adds classname 'open'*/
+        opened_cards.push(card);/*once card is open its pushed to opened_cards array*/
+
+        /*checking if there is more than 2 opened cards*/
+        if(opened_cards.length === 2){
+          console.log('TWO CARDS OPEN')
+          //setTimeout(match, 500) //executes code only when the timer expires
+          disableAllCards();
+          setTimeout(match, 1200);
+          setTimeout(flipCardsBack, 1500);
+          setTimeout(enableAllCards, 1500);
+        }
+      });
+    });
 }
 
+/*--------destroy board---------------*/
+function destroyBoard(){
+  board.querySelectorAll('.flip-card').forEach( el => {
+     el.remove()
+
+  });
+  cards=[];
+}
 createBoard();
 
-let cards = [];
 
-//storing each element into cards array
-document.querySelectorAll('.flip-card').forEach(card => {
-  cards.push(card);
-});
 
-cards.forEach(card => { /*this loops through each card without event listener*/
-  card.addEventListener('click', () => { /*event listener is added to each of the card*/
-
-    //allows to open only two cards
-      card.style.transform = "rotateY(180deg)"; /*once clicked rotates card*/
-      card.classList.add('open');/*adds classname 'open'*/
-      opened_cards.push(card);/*once card is open its pushed to opened_cards array*/
-
-      /*checking if there is more than 2 opened cards*/
-      if(opened_cards.length === 2){
-        console.log('TWO CARDS OPEN')
-        //setTimeout(match, 500) //executes code only when the timer expires
-        disableAllCards();
-        setTimeout(match, 1200);
-        setTimeout(flipCardsBack, 1500);
-        setTimeout(enableAllCards, 1500);
-      }
-    });
-  });
 
 //checks if cards are matching
 function match(){
@@ -143,12 +151,9 @@ function timeUpdate(){
   if(time<1){
     alert("you lost")
     time=20;
-    score=0;
-    board.querySelectorAll('.flip-card').forEach( el => {
-       el.remove()
-    });
-    enableAllCards();
+    scoreUpdate=0;
 
+    destroyBoard();
     createBoard();
   }
   time--;
