@@ -1,10 +1,9 @@
 console.log('hello');
 let time = 120;
 
+//updates timer every 1000miliseconds
 setInterval(timeUpdate, 1000);
-if(time === 0){
-  clearTimeout(timeUpdate);
-}
+
 
 /*store every element of the card to array*/
 let opened_cards = [];
@@ -57,7 +56,6 @@ function createBoard(){
     card.setAttribute('id',`card_${i}`); //check if this is necessary
     let blankCard = document.createElement('img');
     let flippedCard = document.createElement('img');
-    blankCard.setAttribute('src','images/blank.jpg');
     blankCard.classList.add('flip-card-back');
     flippedCard.setAttribute('src', cardArray[i].img)
     flippedCard.classList.add('flip-card-front');
@@ -131,14 +129,18 @@ function flipCardsBack(){
   opened_cards = [];
 }
 
+/*------------Score ----------*/
 function updateScore(update){
   scoreUpdate=update;
   score.innerHTML = scoreUpdate;
 }
 
-
+/*--------Time update -----------*/
 function timeUpdate(){
   document.getElementById('time').innerHTML = time;
-  time--;
 
+  if(time<1){
+    alert("you lost")
+  }
+  time--;
 }
