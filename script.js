@@ -1,8 +1,10 @@
-let timer = 20;
+let timer = 60;
 let cards = []; // cards elements in array
 let opened_cards = []; // flipped cards
 let scoreUpdate = 0; //score starts from 0
 let board = document.querySelector('.board');
+let cards_left;
+let numOfCards = 4;
 /*store every element of the card to array*/
 const cardArray = [
   {
@@ -65,7 +67,7 @@ function createBoard(){
   document.querySelectorAll('.flip-card').forEach(card => {
     cards.push(card);
   });
-
+  cards_left = cardArray.length;
   addingEventListener()
 }
 
@@ -109,8 +111,8 @@ function match(){
       //el.style.transform = "rotateY(0deg)";
       el.classList.add('matched');
       //el.style.display = 'none';
-
-    });
+    })
+    cards_left=cards_left-2;
     updateScore(scoreUpdate+100)
   }
 }
@@ -147,12 +149,19 @@ function updateScore(update){
 function timeUpdate(){
   document.getElementById('time').innerHTML = timer;
 
-  if(timer<1){
+  if(timer<0){
     alert("you lost")
-    timer=20;
-    updateScore(scoreUpdate=0);
-    destroyBoard();
-    createBoard();
+    resetGame();
+  }
+  else if (cards_left===0) {
+    alert("you won");
+    resetGame();
   }
   timer--;
+}
+function resetGame(){
+  timer=60;
+  updateScore(scoreUpdate=0);
+  destroyBoard();
+  createBoard();
 }
