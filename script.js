@@ -159,6 +159,7 @@ function timeUpdate(){
   }
   timer--;
 }
+/*--------resets game--------*/
 function resetGame(){
   timer=60;
   updateScore(scoreUpdate=0);
