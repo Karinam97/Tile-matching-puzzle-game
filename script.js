@@ -44,6 +44,12 @@ const cardArray = [
 setInterval(timeUpdate, 1000);
 createBoard();
 
+class Game{
+  constructor(){
+
+  }
+}
+
 /*------------creating board--------*/
 function createBoard(){
   cardArray.sort(() => 0.5 - Math.random());
