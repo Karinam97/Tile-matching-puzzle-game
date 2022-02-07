@@ -4,6 +4,7 @@ body{
   text-align: center;
   color: #fff;
   min-width: 500px;
+  margin: 0;
 }
 
 h1, .scoreAndTime{
@@ -11,13 +12,13 @@ h1, .scoreAndTime{
 }
 
 .game{
-  margin: 50px auto;
+  margin-top: 0;
   background-image: url("images/background.jpg");
   background-size: cover;
   background-position: center;
-  border-radius: 20px;
-  width: 80%;
-  height: 90vh;
+  min-width:400px;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -30,7 +31,7 @@ h1, .scoreAndTime{
 }
 
 .board{
-  margin: auto;
+  margin:  auto;
   width: 80%;
   display: grid;
   justify-items: center;
@@ -40,23 +41,20 @@ h1, .scoreAndTime{
 
 .flip-card {
   margin: 20px;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   transition: transform 1.8s;
   position: relative;
-
   /*this property must be used with transform prop.
   as it preserves the 3D transformations*/
   transform-style: preserve-3d;
 }
 
-.flip-card-back{
-  background-image: url('images/blank.jpg');
-}
 .flip-card.open {
   pointer-events: none; /*disables double-clicking when card is open*/
 
 }
+
 .flip-card.matched{
   /*********hides the picture from the screen***********/
   visibility: hidden;
@@ -64,10 +62,13 @@ h1, .scoreAndTime{
 
 .flip-card-front, .flip-card-back {
   position: absolute; /*the element is positioned absolutely to its first positioned parent*/
-  right: 0;
+  background-color: #858585;;
   width: 100%;
   height: 100%;
-  text-align: center;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid white;
 }
 
@@ -76,5 +77,16 @@ h1, .scoreAndTime{
   transform: rotateY(180deg);
   /*this card is already flipped 180degrees that is why is not visible.
   once flip-card is flipped it will be visible as it will be at 180degrees position too */
-  background-color: rgb(50 50 49 / 83%);
+}
+
+
+/*----------------------for bigger screens*/
+@media only screen and (min-width: 600px) {
+  .game{
+    margin: 50px auto;
+    border-radius: 20px;
+    width: 80%;
+    height: 90vh;
+    border-radius: 20px;
+  }
 }

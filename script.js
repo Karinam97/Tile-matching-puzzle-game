@@ -9,46 +9,41 @@ let numOfCards = 4;
 const cardArray = [
   {
     name:'card-1',
-    img: 'images/crazy.png'
+    img: 'images/earth-globe.svg'
   },
   {
     name:'card-1',
-    img: 'images/crazy.png'
+    img: 'images/earth-globe.svg'
   },
   {
     name:'card-2',
-    img: 'images/star.png'
+    img: 'images/globe-europe.svg'
   },
   {
     name:'card-2',
-    img: 'images/star.png'
+    img: 'images/globe-europe.svg'
   },
   {
     name:'card-3',
-    img: 'images/party.png'
+    img: 'images/greenplanet.svg'
   },
   {
     name:'card-3',
-    img: 'images/party.png'
+    img: 'images/greenplanet.svg'
   },
   {
     name:'card-4',
-    img: 'images/kiss.png'
+    img: 'images/planet-remix.svg'
   },
   {
     name:'card-4',
-    img: 'images/kiss.png'
+    img: 'images/planet-remix.svg'
   }
 ]
 //updates timer every 1000miliseconds
 setInterval(timeUpdate, 1000);
 createBoard();
 
-class Game{
-  constructor(){
-
-  }
-}
 
 /*------------creating board--------*/
 function createBoard(){
@@ -62,10 +57,12 @@ function createBoard(){
     let blankCard = document.createElement('img');
     let flippedCard = document.createElement('img');
     blankCard.classList.add('flip-card-back');
+    blankCard.setAttribute('src', 'images/blank.svg');
     flippedCard.setAttribute('src', cardArray[i].img)
     flippedCard.classList.add('flip-card-front');
     card.appendChild(blankCard);
     card.appendChild(flippedCard);
+
     board.appendChild(card);
   }
 
@@ -83,8 +80,9 @@ function addingEventListener(){
     card.addEventListener('click', () => { /*event listener is added to each of the card*/
 
       //allows to open only two cards
-        card.style.transform = "rotateY(180deg)"; /*once clicked rotates card*/
+         /*once clicked rotates card*/
         card.classList.add('open');/*adds classname 'open'*/
+        card.style.transform = "rotateY(180deg)";
         opened_cards.push(card);/*once card is open its pushed to opened_cards array*/
 
         /*checking if there is more than 2 opened cards*/
